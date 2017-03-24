@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :password_hash
 
-      t.integer :mile_radius
+      t.integer :proximity
 
       t.timestamps
     end
