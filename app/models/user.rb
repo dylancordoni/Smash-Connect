@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include BCrypt
   has_many :messages
   has_one :location, as: :locationable
+
   has_many :mains, foreign_key: :player_id
   has_many :characters, through: :mains
 
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
       @errors.add(:password, "field missing")
     elsif self.input_password.length < 6
       @errors.add(:password, "must be longer than 6 characters")
+
     end
   end
 
