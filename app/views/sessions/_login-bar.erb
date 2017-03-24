@@ -1,0 +1,17 @@
+<%if logged_in?%>
+  <nav>
+    <ul class="nav">
+      <li>Welcome <%=@current_user.username%>!</li>
+      <li><a href="/sessions/logout">Logout</a></li>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </nav>
+<%else%>
+  <nav>
+    <ul class="nav">
+      <li><a href="/players/new">Register</a></li>
+      <li><a href="/sessions/login">Login</a></li>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </nav>
+<%end%>
