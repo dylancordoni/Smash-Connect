@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
       @errors.add(:password, "field missing")
     elsif self.input_password.length < 6
       @errors.add(:password, "must be longer than 6 characters")
-
     end
   end
 
