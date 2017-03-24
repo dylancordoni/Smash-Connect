@@ -1,5 +1,5 @@
 class Fest < ActiveRecord::Base
-  has_a :location, as: :locationable
+  has_one :location, as: :locationable
   has_many :fest_attendees
   has_many :attendees, through: :fest_attendees, source: :attendees
   belongs_to :host, class_name: User

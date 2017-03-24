@@ -1,15 +1,15 @@
 helpers do
 
-  def login(player)
-    session[:player_id] = player.id
+  def login(user)
+    session[:user_id] = user.id
   end
 
   def logout
-    session.delete(:player_id)
+    session.delete(:user_id)
   end
 
   def current_user
-    @current_user ||= Player.find(session[:player_id]) if session[:player_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def logged_in?

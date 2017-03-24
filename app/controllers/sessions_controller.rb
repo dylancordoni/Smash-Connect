@@ -8,9 +8,9 @@ get '/sessions/logout' do
 end
 
 post '/sessions' do
-  @player = Player.find_by(username: params[:username])
-  if @player && @player.authenticate(params[:password])
-    login(@player)
+  @user = Player.find_by(username: params[:username])
+  if @user && @user.authenticate(params[:password])
+    login(@user)
     redirect '/'
   else
     @errors = ["Invalid Username and/or Password"]

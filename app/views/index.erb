@@ -1,2 +1,9 @@
 <p> Smash Connect is a way to find other smashers and smash-fests near you!</p>
-<p> REGISTER TO FIND PLAYERS</p>
+<div id='registration'>
+  <%if !logged_in?%>
+    <p> REGISTER TO FIND PLAYERS</p>
+    <form id="reg-button" action="/users/new" method="GET">
+      <input type="submit" value="REGISTER HERE">
+    </form>
+  <%end%>
+</div>

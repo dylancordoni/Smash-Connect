@@ -1,7 +1,24 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  getRegForm();
 });
+
+var getRegForm = function(){
+  $("#registration").on('submit', '#reg-button', function(e){
+    e.preventDefault();
+    var $form = $(this);
+    var methodType = $form.attr('method');
+    var route = $form.attr('action');
+
+    $.ajax({
+      url: route,
+      method: methodType
+    })
+    .done(function(regForm){
+      $('#registration').append(regForm)
+      $form.hide();
+    })
+    .fail(function(){
+      console.log("couldnt get reg form")
+    })
+  })
+}
