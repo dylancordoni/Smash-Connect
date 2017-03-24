@@ -1,0 +1,53 @@
+<h2>Player Profile</h2>
+
+<form action="/users/<%=@user.id%>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  Username: <input type="text" name=user[username] value="<%=@user.username%>">
+  <br>
+  Distance: <input type="number" name=user[proximity] value="<%=@user.proximity%>">
+  <br>
+  <input type="submit" value="UPDATE">
+  <br>
+  <br>
+</form>
+
+<div id="char-list">
+  <%=erb :'characters/_index', layout: false, locals: {user: @user}%>
+  <br>
+  <form id='char-button' action="/users/<%=@user.id%>/characters/new" method="GET">
+    <input type="submit" value="Add a Character">
+  </form>
+  <br>
+</div>
+<%if @user.location%>
+  <form action="/users/<%=@user.id%>/locations/<%=@user.location.id%>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    Address: <input type="text" name=location[address] value="<%=@user.location.address%>">
+    <br>
+    *City: <input type="text" name=location[city] value="<%=@user.location.city%>">
+    <br>
+    *State: <input type="text" name=location[state] value="<%=@user.location.state%>">
+    <br>
+    Zipcode: <input type="text" name=location[zipcode] value="<%=@user.location.zipcode%>">
+    <br>
+    <input type="submit" value="UPDATE LOCATION">
+  </form>
+<%else%>
+  <form action="/users/<%=@user.id%>/locations/new" method="POST">
+    Address: <input type="text" name=location[address]>
+    <br>
+    *City: <input type="text" name=location[city]>
+    <br>
+    *State: <input type="text" name=location[state]>
+    <br>
+    Zipcode: <input type="text" name=location[zipcode]>
+    <br>
+    <input type="submit" value="UPDATE LOCATION">
+  </form>
+<%end%>
+<footer> * - Required </footer>
+
+<form action="/users/<%=@user.id%>" method="GET">
+  <input type='submit' value='Back to Profile'>
+</form>
+

@@ -3,12 +3,13 @@ class User < ActiveRecord::Base
   has_many :messages
   has_one :location, as: :locationable
 
-  has_many :mains, foreign_key: :player_id
-  has_many :characters, through: :mains
+  has_many :characters, foreign_key: :player_id
+
+  # validates :proximity, numericality: {only_integers: true}
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validate :password_validation
+  validate :password_validation, on: :create
 
   attr_accessor :input_password
 
@@ -31,7 +32,6 @@ class User < ActiveRecord::Base
       @errors.add(:password, "field missing")
     elsif self.input_password.length < 6
       @errors.add(:password, "must be longer than 6 characters")
-
     end
   end
 

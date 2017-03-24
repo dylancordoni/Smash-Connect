@@ -1,0 +1,19 @@
+<h2><%=@user.username.upcase%></h2>
+<% if @user.location %>
+  <h3>Current Location</h3>
+  <p><%=@user.location.locale%></p>
+<%end%>
+
+<h3>Character(s)</h3>
+<ul>
+  <%@user.characters.each do |char|%>
+    <li>
+      <%=char.name%>
+    </li>
+  <%end%>
+</ul>
+
+
+<form action="/users/<%=@user.id%>/edit" method="GET">
+  <input type='submit' value="edit profile">
+</form>

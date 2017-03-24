@@ -1,0 +1,7 @@
+<%user.characters.each do |character|%>
+  <%=character.name%>
+  <form action="users/<%=user.id%>/characters" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="REMOVE">
+  </form>
+<%end%>
