@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # PostgreSQL driver
 gem 'pg'
 gem 'bcrypt'
+gem 'httparty'
 # Sinatra driver
 gem 'sinatra', '~> 1.0'
 gem 'sinatra-contrib'
